@@ -41,17 +41,12 @@ const QRForm = () => {
 
     return (
         <main>
-            <div
-                className="flex flex-col-reverse align-center justify-center m-auto md:max-w-4xl p-10 md:flex-row"
-            >
-                <div className="w-full md:w-2/3 mr-24">
+            <div className="flex flex-col-reverse align-center justify-center m-auto md:max-w-4xl p-10 md:flex-row">
+                {/* <div className="w-full md:w-2/3 mr-24"> */}
+                <div className="w-full">
                     <h1 className="text-3xl font-bold mb-5 md:text-4xl">QR Code Generator</h1>
-                    <p className="mb-4">
-                        QR Codes allow smartphone users to access your website simply and
-                        quickly.
-                    </p>
                     <p>
-                        Enter your URL below to generate a QR Code and download the image.
+                        Simply enter your URL below, select size in pixels, and click "Generate QR Code".
                     </p>
 
                     <form onSubmit={handleSubmit} id="generate-form" className="mt-4">
@@ -82,18 +77,24 @@ const QRForm = () => {
                         </button>
                     </form>
                 </div>
-                <div className="h-full w-full md:w-1/3 self-center">
+                {/* <div className="h-full w-full md:w-1/3 self-center">
                     <img
                         className="w-1/2  m-auto mb-10 md:w-full"
                         src={qrCodeSVG}
                         alt="logo"
                     />
-                </div>
+                </div> */}
             </div>
+            {showScan && <hr />}
             <div
                 id="generated"
-                className="max-w-5xl m-auto flex flex-col text-center align-center justify-center mt-20"
+                className="max-w-5xl m-auto flex flex-col text-center align-center justify-center mt-10"
             >
+                {showScan && <div
+                    // className="text-xs bg-slate-300 m-auto"
+                    className="text-xs w-4/5 border-2 border-gray-200 rounded p-3 text-grey-dark focus:outline-none mb-1 m-auto text-slate-300"
+                >{urlInputRef.current.value}</div>}
+
                 <div ref={qrcodeRef} id="qrcode" className={`${showScan ? "block" : "hidden"} m-auto`}></div>
                 <a
                     // id="save-link" 
